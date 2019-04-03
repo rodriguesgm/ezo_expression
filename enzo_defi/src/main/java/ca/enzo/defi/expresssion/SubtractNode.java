@@ -1,5 +1,7 @@
 package ca.enzo.defi.expresssion;
 
+import java.math.BigDecimal;
+
 /**
  * Execute a subtraction between two nodes.
  * 
@@ -13,8 +15,8 @@ package ca.enzo.defi.expresssion;
 public class SubtractNode extends ExpressionNode {
 
 	@Override
-	public double resolve() {
-		return this.left.resolve() - this.right.resolve();
+	public BigDecimal resolve() {
+		return this.left.resolve().subtract(this.right.resolve());
 	}
 
 	@Override

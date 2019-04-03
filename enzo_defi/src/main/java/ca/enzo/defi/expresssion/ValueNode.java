@@ -1,5 +1,7 @@
 package ca.enzo.defi.expresssion;
 
+import java.math.BigDecimal;
+
 import lombok.RequiredArgsConstructor;
 
 /**
@@ -16,10 +18,10 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ValueNode extends ExpressionNode {
 
-	private final double value;
+	private final BigDecimal value;
 
 	@Override
-	public double resolve() {
+	public BigDecimal resolve() {
 		return this.value;
 	}
 

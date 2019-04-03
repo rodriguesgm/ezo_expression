@@ -1,5 +1,7 @@
 package ca.enzo.defi.expresssion;
 
+import java.math.BigDecimal;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,7 +25,7 @@ public abstract class ExpressionNode {
 	/**
 	 * @return Should execute the respective action on the nodes and return the result
 	 */
-	public abstract double resolve();
+	public abstract BigDecimal resolve();
 
 	/**
 	 * @return Should return its priority on the equation

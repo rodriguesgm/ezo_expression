@@ -1,5 +1,7 @@
 package ca.enzo.defi.expresssion;
 
+import java.math.BigDecimal;
+
 /**
  * Execute a multiplication between two nodes.
  * 
@@ -11,8 +13,8 @@ package ca.enzo.defi.expresssion;
 public class MultiplierNode extends ExpressionNode {
 
 	@Override
-	public double resolve() {
-		return this.left.resolve() * this.right.resolve();
+	public BigDecimal resolve() {
+		return this.left.resolve().multiply(this.right.resolve());
 	}
 
 	@Override

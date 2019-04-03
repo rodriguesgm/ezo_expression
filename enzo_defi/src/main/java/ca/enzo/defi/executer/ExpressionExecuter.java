@@ -1,9 +1,11 @@
 package ca.enzo.defi.executer;
 
+import java.math.BigDecimal;
+
 import ca.enzo.defi.parser.EmptyOperatorExpression;
 import ca.enzo.defi.parser.ExpressionBuilder;
 import ca.enzo.defi.parser.ExpressionElement;
-import ca.enzo.defi.parser.ExpressionParser;
+import ca.enzo.defi.parser.ExpressionExtractor;
 import ca.enzo.defi.parser.SimpleOperatorExpression;
 import ca.enzo.defi.parser.ValueExpression;
 import lombok.RequiredArgsConstructor;
@@ -13,21 +15,21 @@ public class ExpressionExecuter {
 	
 	private final String expression;
 	
-	public double execute() {
+	public BigDecimal execute() {
 		int expressionLength = this.expression.length();
 		int index = 0;
 
-		ExpressionParser parser = new ExpressionParser(this.expression);
+		ExpressionExtractor extractor = new ExpressionExtractor(this.expression);
 		ExpressionBuilder builder = new ExpressionBuilder();
 		while (index < expressionLength) {
 			char expressionChar = this.expression.charAt(index);
 			ExpressionElement element = factory(expressionChar);
 
-			parser.setCurrentIndex(index);
-			element.accept(parser);
+			extractor.setCurrentIndex(index);
+			element.accept(extractor);
 
 			element.accept(builder);
-			index++;
+			index = extractor.getCurrentIndex() + 1;
 		}
 
 		return builder.getExpression().resolve();
@@ -53,6 +55,7 @@ public class ExpressionExecuter {
 		case '8':
 		case '9':
 		case '0':
+		case '.':
 			return new ValueExpression();
 		default:
 			throw new RuntimeException("Operator is '" + expChar + "' not recognized");

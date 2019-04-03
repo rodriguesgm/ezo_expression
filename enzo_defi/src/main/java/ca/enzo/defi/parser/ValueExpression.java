@@ -1,12 +1,14 @@
 package ca.enzo.defi.parser;
 
+import java.math.BigDecimal;
+
 import ca.enzo.defi.expresssion.ExpressionNode;
 import ca.enzo.defi.expresssion.ValueNode;
 import lombok.Setter;
 
 public class ValueExpression implements ExpressionElement {
 
-	@Setter private int value;
+	@Setter private BigDecimal value;
 
 	@Override
 	public void accept(ExpressionVisitor visitor) {
@@ -17,4 +19,8 @@ public class ValueExpression implements ExpressionElement {
 	public ExpressionNode createNode() {
 		return new ValueNode(this.value);
 	}
+	
+//	public double readValue(String expression, int startIndex) {
+//		
+//	}
 }
