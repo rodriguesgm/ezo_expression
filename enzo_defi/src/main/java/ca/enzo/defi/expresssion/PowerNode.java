@@ -1,6 +1,7 @@
 package ca.enzo.defi.expresssion;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 
 /**
  * Execute an exponentiation operation between two nodes.
@@ -14,7 +15,7 @@ public class PowerNode extends ExpressionNode {
 
 	@Override
 	public BigDecimal resolve() {
-		return this.left.resolve().pow(this.right.resolve().intValue());
+		return this.left.resolve().pow(this.right.resolve().intValue(), MathContext.DECIMAL64);
 	}
 
 	@Override

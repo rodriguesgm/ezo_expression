@@ -5,12 +5,15 @@ import ca.enzo.defi.parser.elements.ExpressionElement;
 import ca.enzo.defi.parser.elements.SimpleOperatorExpression;
 import ca.enzo.defi.parser.elements.ValueExpression;
 import lombok.experimental.UtilityClass;
+import ca.enzo.defi.parser.elements.ParenthesesExpression;
 
 @UtilityClass
 public final class ExpressionElementFactory {
 
 	public static ExpressionElement factory(char expChar) {
 		switch (expChar) {
+		case '(':
+			return new ParenthesesExpression();
 		case ' ':
 			return new EmptyOperatorExpression();
 		case '+':

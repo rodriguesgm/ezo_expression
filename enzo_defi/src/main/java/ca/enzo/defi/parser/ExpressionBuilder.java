@@ -4,6 +4,7 @@ import ca.enzo.defi.expresssion.ExpressionNode;
 import lombok.Getter;
 import ca.enzo.defi.expresssion.ValueNode;
 import ca.enzo.defi.parser.elements.EmptyOperatorExpression;
+import ca.enzo.defi.parser.elements.ParenthesesExpression;
 import ca.enzo.defi.parser.elements.SimpleOperatorExpression;
 import ca.enzo.defi.parser.elements.ValueExpression;
 
@@ -42,5 +43,19 @@ public class ExpressionBuilder implements ExpressionVisitor {
 	@Override
 	public void visit(EmptyOperatorExpression emptyOperatorExpression) {
 		// do nothing		
+	}
+
+	@Override
+	public void visit(ParenthesesExpression parenthesesExpression) {
+		ExpressionNode value = parenthesesExpression.createNode();
+		if (this.expression == null) {
+			this.expression = value;
+		} else if (!(this.expression instanceof ValueNode)) {
+			ExpressionNode ex = this.expression;
+			while (ex.getRight() != null) {
+				ex = ex.getRight();
+			}
+			ex.setRight(value);
+		}
 	}
 }

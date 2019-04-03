@@ -33,9 +33,9 @@ class ExpressionExecuterTest {
 		result = new ExpressionExecuter(expression).execute();
 		Assertions.assertEquals(result.doubleValue(), 10.0);
 
-//		expression = "(2+5)*3";
-//		result = new ExpressionExecuter(expression).execute();
-//		Assertions.assertEquals(result, 21.0);
+		expression = "(2+5)*3";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 21.0);
 
 		expression = "10/2";
 		result = new ExpressionExecuter(expression).execute();
@@ -87,5 +87,17 @@ class ExpressionExecuterTest {
 		expression = "10324.234 + 234.234 * 234.1223 / 2";
 		result = new ExpressionExecuter(expression).execute();
 		Assertions.assertEquals(result.doubleValue(), 37743.9354091);
+		
+		expression = "2*2 * ( 3 + 1 ) ^ 3 / 2";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 128.0);
+		
+		expression = "2*2 + ( 3 * 1 ^3 ) - 3 / 2";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 5.5);
+
+		expression = "(2*25.34 + ( (34.3) * 1 ^ ( 30 - 4.4) ) - 3 / 2)";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 83.48);
 	}
 }

@@ -2,6 +2,7 @@ package ca.enzo.defi.executer;
 
 import java.math.BigDecimal;
 
+import ca.enzo.defi.expresssion.ExpressionNode;
 import ca.enzo.defi.parser.ExpressionBuilder;
 import ca.enzo.defi.parser.ExpressionExtractor;
 import ca.enzo.defi.parser.elements.ExpressionElement;
@@ -13,6 +14,10 @@ public class ExpressionExecuter {
 	private final String expression;
 	
 	public BigDecimal execute() {
+		return this.buildExpression().resolve();
+	}
+	
+	public ExpressionNode buildExpression() {
 		ExpressionExtractor extractor = new ExpressionExtractor(this.expression);
 		ExpressionBuilder builder = new ExpressionBuilder();
 		while (extractor.hasMore()) {
@@ -21,6 +26,6 @@ public class ExpressionExecuter {
 			element.accept(builder);
 		}
 
-		return builder.getExpression().resolve();
+		return builder.getExpression();
 	}
 }
