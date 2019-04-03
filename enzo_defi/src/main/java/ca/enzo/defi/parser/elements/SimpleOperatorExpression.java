@@ -1,10 +1,11 @@
-package ca.enzo.defi.parser;
+package ca.enzo.defi.parser.elements;
 
 import ca.enzo.defi.expresssion.DivisionNode;
 import ca.enzo.defi.expresssion.ExpressionNode;
 import ca.enzo.defi.expresssion.MultiplierNode;
 import ca.enzo.defi.expresssion.SubtractNode;
 import ca.enzo.defi.expresssion.SumNode;
+import ca.enzo.defi.parser.ExpressionVisitor;
 import ca.enzo.defi.expresssion.PowerNode;
 
 public class SimpleOperatorExpression implements ExpressionElement {

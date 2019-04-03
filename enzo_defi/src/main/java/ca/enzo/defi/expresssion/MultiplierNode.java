@@ -21,5 +21,4 @@ public class MultiplierNode extends ExpressionNode {
 	public ExpressionNodePriority getPriority() {
 		return ExpressionNodePriority.MEDIUM;
 	}
-
 }

@@ -1,6 +1,7 @@
-package ca.enzo.defi.parser;
+package ca.enzo.defi.parser.elements;
 
 import ca.enzo.defi.expresssion.ExpressionNode;
+import ca.enzo.defi.parser.ExpressionVisitor;
 
 public interface ExpressionElement {
 

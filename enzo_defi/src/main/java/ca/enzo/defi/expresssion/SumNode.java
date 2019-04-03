@@ -23,5 +23,4 @@ public class SumNode extends ExpressionNode {
 	public ExpressionNodePriority getPriority() {
 		return ExpressionNodePriority.LOW;
 	}
-
 }

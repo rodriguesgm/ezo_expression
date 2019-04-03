@@ -2,18 +2,31 @@ package ca.enzo.defi.parser;
 
 import java.math.BigDecimal;
 
-import lombok.Getter;
+import ca.enzo.defi.parser.elements.ExpressionElement;
+import ca.enzo.defi.parser.elements.ValueExpression;
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
 @RequiredArgsConstructor
-public class ExpressionExtractor implements ExpressionVisitor {
+public class ExpressionExtractor {
 
 	private final String expression;
-	@Setter @Getter private int currentIndex;
+	private int currentIndex = 0;
 
-	@Override
-	public void visit(ValueExpression valueExp) {
+	public boolean hasMore() {
+		return this.expression.length() > this.currentIndex;
+	}
+
+	public ExpressionElement nextNode() {
+		char nextChar = this.expression.charAt(this.currentIndex);
+		ExpressionElement element = ExpressionElementFactory.factory(nextChar);
+		if (element instanceof ValueExpression) {
+			this.parseNumber((ValueExpression) element);
+		}
+		this.currentIndex++;
+		return element;
+	}
+
+	private void parseNumber(ValueExpression valueExp) {
 		int index = this.currentIndex;
 		String number = "";
 		char digit = this.expression.charAt(index);
@@ -29,15 +42,4 @@ public class ExpressionExtractor implements ExpressionVisitor {
 		this.currentIndex = --index;
 		valueExp.setValue(new BigDecimal(number));
 	}
-
-	@Override
-	public void visit(SimpleOperatorExpression valueExp) {
-		
-	}
-
-	@Override
-	public void visit(EmptyOperatorExpression emptyOperatorExpression) {
-		
-	}
-
 }

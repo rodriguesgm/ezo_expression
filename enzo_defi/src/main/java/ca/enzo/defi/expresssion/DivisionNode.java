@@ -21,5 +21,4 @@ public class DivisionNode extends ExpressionNode {
 	public ExpressionNodePriority getPriority() {
 		return ExpressionNodePriority.MEDIUM;
 	}
-
 }

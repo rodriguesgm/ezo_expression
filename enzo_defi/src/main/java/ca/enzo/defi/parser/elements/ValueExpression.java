@@ -1,9 +1,10 @@
-package ca.enzo.defi.parser;
+package ca.enzo.defi.parser.elements;
 
 import java.math.BigDecimal;
 
 import ca.enzo.defi.expresssion.ExpressionNode;
 import ca.enzo.defi.expresssion.ValueNode;
+import ca.enzo.defi.parser.ExpressionVisitor;
 import lombok.Setter;
 
 public class ValueExpression implements ExpressionElement {
@@ -19,8 +20,4 @@ public class ValueExpression implements ExpressionElement {
 	public ExpressionNode createNode() {
 		return new ValueNode(this.value);
 	}
-	
-//	public double readValue(String expression, int startIndex) {
-//		
-//	}
 }

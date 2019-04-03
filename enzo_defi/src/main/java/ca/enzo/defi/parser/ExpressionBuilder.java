@@ -3,6 +3,9 @@ package ca.enzo.defi.parser;
 import ca.enzo.defi.expresssion.ExpressionNode;
 import lombok.Getter;
 import ca.enzo.defi.expresssion.ValueNode;
+import ca.enzo.defi.parser.elements.EmptyOperatorExpression;
+import ca.enzo.defi.parser.elements.SimpleOperatorExpression;
+import ca.enzo.defi.parser.elements.ValueExpression;
 
 public class ExpressionBuilder implements ExpressionVisitor {
 
@@ -40,5 +43,4 @@ public class ExpressionBuilder implements ExpressionVisitor {
 	public void visit(EmptyOperatorExpression emptyOperatorExpression) {
 		// do nothing		
 	}
-
 }

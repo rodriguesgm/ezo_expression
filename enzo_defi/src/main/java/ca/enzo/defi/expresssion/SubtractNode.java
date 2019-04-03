@@ -23,5 +23,4 @@ public class SubtractNode extends ExpressionNode {
 	public ExpressionNodePriority getPriority() {
 		return ExpressionNodePriority.LOW;
 	}
-
 }
