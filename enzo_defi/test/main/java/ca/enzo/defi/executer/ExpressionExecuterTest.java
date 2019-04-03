@@ -83,5 +83,9 @@ class ExpressionExecuterTest {
 		expression = "2.81*3-1";
 		result = new ExpressionExecuter(expression).execute();
 		Assertions.assertEquals(result.doubleValue(), 7.43);
+		
+		expression = "10324.234 + 234.234 * 234.1223 / 2";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 37743.9354091);
 	}
 }

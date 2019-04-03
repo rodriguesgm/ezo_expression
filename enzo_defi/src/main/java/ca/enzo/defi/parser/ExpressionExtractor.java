@@ -19,14 +19,15 @@ public class ExpressionExtractor {
 	public ExpressionElement nextNode() {
 		char nextChar = this.expression.charAt(this.currentIndex);
 		ExpressionElement element = ExpressionElementFactory.factory(nextChar);
+		int nextIndexIncrement = 1;
 		if (element instanceof ValueExpression) {
-			this.parseNumber((ValueExpression) element);
+			nextIndexIncrement = this.parseNumber((ValueExpression) element);
 		}
-		this.currentIndex++;
+		this.currentIndex += nextIndexIncrement;
 		return element;
 	}
 
-	private void parseNumber(ValueExpression valueExp) {
+	private int parseNumber(ValueExpression valueExp) {
 		int index = this.currentIndex;
 		String number = "";
 		char digit = this.expression.charAt(index);
@@ -39,7 +40,7 @@ public class ExpressionExtractor {
 				digit = '\u0000';
 			}
 		} while (Character.isDigit(digit) || digit == '.');
-		this.currentIndex = --index;
 		valueExp.setValue(new BigDecimal(number));
+		return number.length();
 	}
 }
