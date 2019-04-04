@@ -20,7 +20,7 @@ class ExpressionExecuterTest {
 //		expression = "1 + -1";
 //		result = new ExpressionExecuter(expression).execute();
 //		Assertions.assertEquals(result, 0.0);
-//
+
 //		expression = "-1 - -1";
 //		result = new ExpressionExecuter(expression).execute();
 //		Assertions.assertEquals(result, 0.0);
@@ -91,6 +91,10 @@ class ExpressionExecuterTest {
 		expression = "2*2 * ( 3 + 1 ) ^ 3 / 2";
 		result = new ExpressionExecuter(expression).execute();
 		Assertions.assertEquals(result.doubleValue(), 128.0);
+
+		expression = "3 ^ ( 3 + 1 )  / 2";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 40.5);
 		
 		expression = "2*2 + ( 3 * 1 ^3 ) - 3 / 2";
 		result = new ExpressionExecuter(expression).execute();

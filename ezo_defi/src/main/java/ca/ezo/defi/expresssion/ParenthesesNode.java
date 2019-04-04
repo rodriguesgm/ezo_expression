@@ -3,8 +3,14 @@ package ca.ezo.defi.expresssion;
 import java.math.BigDecimal;
 
 import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 
+/**
+ * Representes an expression inside ().
+ * It has a hole structure of an expression nodes and the resolve only
+ * executes the resolve of that structure
+ * 
+ * @author Guilherme
+ */
 @RequiredArgsConstructor
 public class ParenthesesNode extends ExpressionNode {
 

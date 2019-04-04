@@ -3,11 +3,14 @@ package ca.ezo.defi.parser.elements;
 import ca.ezo.defi.expresssion.DivisionNode;
 import ca.ezo.defi.expresssion.ExpressionNode;
 import ca.ezo.defi.expresssion.MultiplierNode;
+import ca.ezo.defi.expresssion.PowerNode;
 import ca.ezo.defi.expresssion.SubtractNode;
 import ca.ezo.defi.expresssion.SumNode;
 import ca.ezo.defi.parser.ExpressionVisitor;
-import ca.ezo.defi.expresssion.PowerNode;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor(access = AccessLevel.PACKAGE)
 public class SimpleOperatorExpression implements ExpressionElement {
 	private char expChar;
 

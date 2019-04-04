@@ -4,12 +4,19 @@ import java.math.BigDecimal;
 import java.util.Stack;
 
 import ca.ezo.defi.parser.elements.ExpressionElement;
+import ca.ezo.defi.parser.elements.ExpressionElementFactory;
 import ca.ezo.defi.parser.elements.ParenthesesExpression;
 import ca.ezo.defi.parser.elements.ValueExpression;
 import lombok.RequiredArgsConstructor;
 import ca.ezo.defi.executer.ExpressionExecuter;
 import ca.ezo.defi.expresssion.ExpressionNode;
 
+/**
+ * Gets a expression and extract each node (number, operator, sub-expression,
+ * etc) of it.
+ * 
+ * @author Guilherme
+ */
 @RequiredArgsConstructor
 public class ExpressionExtractor {
 
@@ -36,7 +43,7 @@ public class ExpressionExtractor {
 	private int extractParenthesesExpression(ParenthesesExpression exp) {
 		int index = this.currentIndex;
 		Stack<Boolean> stack = new Stack<Boolean>();
-		
+
 		stack.push(true);
 		String expression = "(";
 		do {
@@ -55,7 +62,7 @@ public class ExpressionExtractor {
 		exp.setExpression(node);
 		return expression.length();
 	}
-	
+
 	private int parseNumber(ValueExpression valueExp) {
 		int index = this.currentIndex;
 		String number = "";
