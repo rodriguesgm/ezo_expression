@@ -1,5 +1,13 @@
 Defi Ezo
 
+Requirements:
+- Java 8
+- Lombok (https://projectlombok.org/)
+- jUnit5 
+* To make it simple, I did not put maven or anything to manage libraries, etc, because it is a simple code. Also, I only made one test class with lot of expression to make simple to execute
+
+---- 
+
 Gets a string mathematical expression and executes it given the result.
 
 The main idea is:
