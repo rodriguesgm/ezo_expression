@@ -1,12 +1,11 @@
 package ca.ezo.defi.parser;
 
 import ca.ezo.defi.expresssion.ExpressionNode;
-import lombok.Getter;
-import ca.ezo.defi.expresssion.ValueNode;
 import ca.ezo.defi.parser.elements.EmptyOperatorExpression;
 import ca.ezo.defi.parser.elements.ParenthesesExpression;
 import ca.ezo.defi.parser.elements.SimpleOperatorExpression;
 import ca.ezo.defi.parser.elements.ValueExpression;
+import lombok.Getter;
 
 public class ExpressionBuilder implements ExpressionVisitor {
 
@@ -19,7 +18,7 @@ public class ExpressionBuilder implements ExpressionVisitor {
 		ExpressionNode value = valueExp.createNode();
 		if (this.expression == null) {
 			this.expression = value;
-		} else if (!(this.expression instanceof ValueNode)) {
+		} else {
 			ExpressionNode ex = this.expression;
 			while (ex.getRight() != null) {
 				ex = ex.getRight();
@@ -35,8 +34,14 @@ public class ExpressionBuilder implements ExpressionVisitor {
 			nodeExpression.setLeft(this.expression);
 			this.expression = nodeExpression;
 		} else {
-			nodeExpression.setLeft(this.expression.getRight());
-			this.expression.setRight(nodeExpression);
+			ExpressionNode parentNode = this.expression;
+			ExpressionNode rightNode = this.expression.getRight();
+			while (rightNode != null && !rightNode.getPriority().hasPriorityOf(nodeExpression.getPriority())) {
+				parentNode = rightNode;
+				rightNode = rightNode.getRight();
+			}
+			nodeExpression.setLeft(rightNode);
+			parentNode.setRight(nodeExpression);
 		}
 	}
 
@@ -50,7 +55,7 @@ public class ExpressionBuilder implements ExpressionVisitor {
 		ExpressionNode value = parenthesesExpression.createNode();
 		if (this.expression == null) {
 			this.expression = value;
-		} else if (!(this.expression instanceof ValueNode)) {
+		} else {
 			ExpressionNode ex = this.expression;
 			while (ex.getRight() != null) {
 				ex = ex.getRight();

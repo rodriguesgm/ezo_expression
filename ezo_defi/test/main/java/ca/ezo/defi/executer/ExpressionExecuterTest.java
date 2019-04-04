@@ -67,7 +67,7 @@ class ExpressionExecuterTest {
 	}
 
 	@Test
-	void tests_custom_exemples() {
+	void tests_custom_exemples() {		
 		String expression = "3 + 2 /4* 3+ 2*2  - 1 *4+3/2";
 		BigDecimal result = new ExpressionExecuter(expression).execute();
 		Assertions.assertEquals(result.doubleValue(), 6.0);
@@ -99,5 +99,17 @@ class ExpressionExecuterTest {
 		expression = "(2*25.34 + ( (34.3) * 1 ^ ( 30 - 4.4) ) - 3 / 2)";
 		result = new ExpressionExecuter(expression).execute();
 		Assertions.assertEquals(result.doubleValue(), 83.48);
+		
+		expression = "3 + 2 * 3 ^ 3";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 57.0);
+		
+		expression = "3 ^ 2 * 3 + 3";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 30.0);
+
+		expression = "3 + 2 ^ 3 * 3";
+		result = new ExpressionExecuter(expression).execute();
+		Assertions.assertEquals(result.doubleValue(), 27.0);
 	}
 }

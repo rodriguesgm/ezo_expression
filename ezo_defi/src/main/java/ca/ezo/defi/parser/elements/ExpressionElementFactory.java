@@ -1,12 +1,12 @@
-package ca.ezo.defi.parser;
+package ca.ezo.defi.parser.elements;
 
-import ca.ezo.defi.parser.elements.EmptyOperatorExpression;
-import ca.ezo.defi.parser.elements.ExpressionElement;
-import ca.ezo.defi.parser.elements.SimpleOperatorExpression;
-import ca.ezo.defi.parser.elements.ValueExpression;
 import lombok.experimental.UtilityClass;
-import ca.ezo.defi.parser.elements.ParenthesesExpression;
 
+/**
+ * Factory to create a ParserExpression based on the character
+ * 
+ * @author Guilherme
+ */
 @UtilityClass
 public final class ExpressionElementFactory {
 
